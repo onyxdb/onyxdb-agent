@@ -35,7 +35,9 @@ jobs:
 
       - name: Tag Docker image
         run: |
-          docker tag ${{env.DOCKER_REPOSITORY}} ${{env.DOCKER_REPOSITORY}}:${{env.BRANCH_NAME}}-${GITHUB_SHA::7}
+          BRANCH_IMAGE = ${{env.DOCKER_REPOSITORY}}:${{env.BRANCH_NAME}}-${GITHUB_SHA::7}
+          echo "Pushing image $BRANCH_IMAGE"
+          docker tag ${{env.DOCKER_REPOSITORY}} $BRANCH_IMAGE
           if [ ${{env.BRANCH_NAME}} == ${{env.MASTER_BRANCH}} ]; then
             docker tag  ${{env.DOCKER_REPOSITORY}} ${{env.DOCKER_REPOSITORY}}:latest
           fi
