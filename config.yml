@@ -2,9 +2,9 @@ http:
   host: "0.0.0.0"
   port: 9002
 
-mongo:
-  uri: "mongodb://127.0.0.1:27017,127.0.0.1:27018,127.0.0.1:27019/?replicaSet=rs0"
-  cluster_id: "eb35dfaa-0ac0-4365-88e5-44f0a7cdd13b"
-
 mdb:
   base_url: "http://localhost:9001"
+  cluster_id: "eb35dfaa-0ac0-4365-88e5-44f0a7cdd13b"
+
+mongo:
+  uri: "mongodb://127.0.0.1:27017,127.0.0.1:27018,127.0.0.1:27019/?replicaSet=rs0"

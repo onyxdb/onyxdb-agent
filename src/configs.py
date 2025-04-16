@@ -13,11 +13,11 @@ class HttpConfig(BaseModel):
 
 class MongoConfig(BaseModel):
     uri: str = Field(default=...)
-    cluster_id: UUID = Field(default=...)
 
 
 class MdbConfig(BaseModel):
     base_url: str = Field(default=...)
+    cluster_id: UUID = Field(default=...)
 
 
 class AgentConfig(BaseSettings):
