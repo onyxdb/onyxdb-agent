@@ -39,5 +39,5 @@ jobs:
 
       - name: Push Docker image
         run: |
-          echo "Pushing image " ${{env.DOCKER_REPOSITORY}}:${{env.BRANCH_NAME}}-${GITHUB_SHA::7}
+          echo "Pushing image " $DOCKER_REPOSITORY:$BRANCH_NAME-${GITHUB_SHA::7}
           docker push ${{env.DOCKER_REPOSITORY}}:${{env.BRANCH_NAME}}-${GITHUB_SHA::7}
