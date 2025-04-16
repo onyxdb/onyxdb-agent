@@ -10,6 +10,6 @@ COPY src/ ./src
 COPY main.py .
 COPY config.yml .
 
-EXPOSE 8080
+EXPOSE 9002
 
 ENTRYPOINT ["python3", "main.py"]
