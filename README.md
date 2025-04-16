@@ -2,7 +2,7 @@
 
 ## Development
 
-## Install Python Venv
+### Install Python Venv
 
 ```shell
 pyenv install 3.12.1
