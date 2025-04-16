@@ -60,7 +60,7 @@ class Agent:
             role = MongoHostRole.secondary
 
         return MongoHost(
-            name=member.get("name"),
+            name=str(member.get("name")).split(".")[0],
             clusterId=self._config.mdb.cluster_id,
             type=MongoHostType.mongod,
             status=status,
