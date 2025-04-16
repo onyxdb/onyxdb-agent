@@ -1,8 +1,8 @@
 # onyxdb-agent
 
-## Разработка
+## Development
 
-## Установка Python
+## Install Python Venv
 
 ```shell
 pyenv install 3.12.1
