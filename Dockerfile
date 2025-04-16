@@ -6,8 +6,9 @@ COPY requirements.txt .
 
 RUN pip install -r requirements.txt
 
-COPY main.py .
 COPY src/ ./src
+COPY main.py .
+COPY config.yml .
 
 EXPOSE 8080
 
