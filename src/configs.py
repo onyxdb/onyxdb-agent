@@ -31,7 +31,7 @@ class AgentConfig(BaseSettings):
             EnvSettingsSource(
                 settings_cls,
                 env_prefix="ONYXDB_",
-                env_nested_delimiter="_",
+                env_nested_delimiter="__",
                 case_sensitive=False
             ),
             YamlConfigSettingsSource(settings_cls, yaml_file="./config.yml"),

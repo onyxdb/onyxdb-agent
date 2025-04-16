@@ -27,11 +27,11 @@ class Agent:
     async def async_start(self):
         admin_db = self._mongo_client.get_database("admin")
 
-        logger.info(f"Started reporting hosts for clusterId={self._config.mongo.cluster_id}")
+        logger.info(f"Started reporting hosts for cluster_id={self._config.mongo.cluster_id}")
         while True:
             try:
                 await self._report_hosts(admin_db)
-                logger.info("Reported hosts")
+                logger.info(f"Reported hosts for cluster_id={self._config.mongo.cluster_id}")
             except Exception as e:
                 logger.error(f"Failed to report hosts", e)
             time.sleep(self._REPORT_HOSTS_DELAY_SECONDS)
