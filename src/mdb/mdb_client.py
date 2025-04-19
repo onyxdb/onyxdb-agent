@@ -16,6 +16,6 @@ class MdbClient(BaseWebClient):
 
     async def update_mongo_hosts(self, rq: UpdateMongoHostsRequest):
         await self._put(
-            endpoint="/api/internal/managed-mongodb/v1/clusters/hosts",
+            endpoint="/api/managed-mongodb/v1/internal/hosts",
             data=rq.model_dump_json()
         )
