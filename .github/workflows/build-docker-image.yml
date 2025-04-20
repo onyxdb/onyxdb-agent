@@ -16,7 +16,7 @@ env:
 
 jobs:
   build-push-docker-image:
-    runs-on: self-hosted
+    runs-on: onyxdb-linux
 
     steps:
       - name: Checkout
