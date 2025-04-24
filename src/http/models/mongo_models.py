@@ -1,9 +1,9 @@
 from pydantic import BaseModel
 
 
-class CreateMongoDatabaseRequest(BaseModel):
+class CreateMongoDatabaseRequestDTO(BaseModel):
     name: str
 
 
-class DeleteMongoDatabaseRequest(BaseModel):
+class DeleteMongoDatabaseRequestDTO(BaseModel):
     name: str

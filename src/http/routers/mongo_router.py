@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Body, Response
 
-from src.http.models.mongo_models import CreateMongoDatabaseRequest, DeleteMongoDatabaseRequest
+from src.http.models.mongo_models import CreateMongoDatabaseRequestDTO, DeleteMongoDatabaseRequestDTO
 from src.http.routers.base_router import BaseRouter
 from src.mdb.mongo_service import MongoService
 
@@ -22,10 +22,10 @@ class MongoRouter(BaseRouter):
             summary="Delete MongoDB database"
         )(self._delete_database)
 
-    async def _create_database(self, rq: CreateMongoDatabaseRequest = Body()):
+    async def _create_database(self, rq: CreateMongoDatabaseRequestDTO = Body()):
         await self._mongo_service.create_database(rq.name)
         return Response()
 
-    async def _delete_database(self, rq: DeleteMongoDatabaseRequest = Body()):
+    async def _delete_database(self, rq: DeleteMongoDatabaseRequestDTO = Body()):
         await self._mongo_service.delete_database(rq.name)
         return Response()
