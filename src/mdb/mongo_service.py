@@ -6,7 +6,7 @@ class MongoService:
 
     async def create_database(self, name: str):
         db = self._mongo_client[name]
-        collection = db["onyxdb"]
+        collection = db["onyxdb_system"]
         collection.insert_one({})
 
     async def delete_database(self, name: str):
