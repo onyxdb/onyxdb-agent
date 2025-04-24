@@ -1,5 +1,6 @@
 import asyncio
 import logging
+import threading
 import time
 from typing import List, Dict, Any
 
@@ -7,8 +8,10 @@ from pymongo import MongoClient
 from pymongo.synchronous.database import Database
 
 from src.configs import AgentConfig
+from src.http.http_service import HttpService
 from src.mdb.mdb_client import MdbClient
 from src.mdb.models import MongoHost, UpdateMongoHostsRequest, MongoHostType, MongoHostStatus, MongoHostRole
+from src.mdb.mongo_service import MongoService
 
 logger = logging.getLogger(__name__)
 
@@ -20,11 +23,19 @@ class Agent:
         self._config = config
         self._mongo_client = MongoClient(config.mongo.uri)
         self._mdb_client = MdbClient(config.mdb)
+        self._mongo_service = MongoService(self._mongo_client)
+        self._http_service = HttpService(
+            config=config.http,
+            mongo_service=self._mongo_service
+        )
 
     def start(self):
         asyncio.run(self.async_start())
 
     async def async_start(self):
+        http_service_process = threading.Thread(target=self._http_service.run)
+        http_service_process.start()
+
         admin_db = self._mongo_client.get_database("admin")
 
         logger.info(f"Started reporting hosts for cluster_id={self._config.mdb.cluster_id}")

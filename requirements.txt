@@ -7,3 +7,6 @@ httpx==0.28.1 # py3.8
 PyYAML==6.0.2 # py3.8
 pydantic-settings==2.8.1 # py3.8
 requests==2.32.3 # py3.8
+pytest==8.3.5 # py3.8
+pytest-asyncio==0.26.0 # py3.9
+pytest-mock==3.14.0 # py3.8
