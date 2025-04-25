@@ -10,3 +10,4 @@ requests==2.32.3 # py3.8
 pytest==8.3.5 # py3.8
 pytest-asyncio==0.26.0 # py3.9
 pytest-mock==3.14.0 # py3.8
+kubernetes==32.0.1 # py3.6
