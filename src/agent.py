@@ -4,6 +4,7 @@ import threading
 import time
 from typing import List, Dict, Any
 
+from kubernetes import config
 from pymongo import MongoClient
 from pymongo.synchronous.database import Database
 
@@ -33,6 +34,8 @@ class Agent:
         asyncio.run(self.async_start())
 
     async def async_start(self):
+        self._load_kube_config()
+
         http_service_process = threading.Thread(target=self._http_service.run)
         http_service_process.start()
 
@@ -46,6 +49,9 @@ class Agent:
             except Exception as e:
                 logger.error(f"Failed to report hosts", e)
             time.sleep(self._REPORT_HOSTS_DELAY_SECONDS)
+
+    def _load_kube_config(self):
+        config.load_kube_config()
 
     async def _report_hosts(self, admin_db: Database):
         hosts: List[MongoHost] = await self._get_rs_hosts(admin_db)
