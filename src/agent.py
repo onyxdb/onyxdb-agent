@@ -34,8 +34,8 @@ class Agent:
         asyncio.run(self.async_start())
 
     async def async_start(self):
-        self._load_kube_config()
-
+        # self._load_kube_config()
+        #
         http_service_process = threading.Thread(target=self._http_service.run)
         http_service_process.start()
 
