@@ -10,6 +10,6 @@ COPY src/ ./src
 COPY main.py .
 COPY config.yml .
 
-EXPOSE 9002
+EXPOSE 9004
 
 ENTRYPOINT ["python3", "main.py"]
