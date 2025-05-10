@@ -9,13 +9,15 @@ class MdbClient(BaseWebClient):
             "Content-type": "application/json",
             "Accept": "application/json",
         }
+        auth_headers = {"Authorization": f"Bearer {config.access_token}"}
         super().__init__(
             base_url=config.base_url,
-            default_headers=default_headers
+            default_headers=default_headers,
+            auth_headers=auth_headers
         )
 
     async def update_mongo_hosts(self, rq: UpdateMongoHostsRequest):
         await self._put(
-            endpoint="/api/managed-mongodb/v1/internal/hosts",
+            endpoint="/api/mdb/mongodb/internal/hosts",
             data=rq.model_dump_json()
         )
