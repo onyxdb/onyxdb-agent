@@ -18,6 +18,7 @@ class MongoConfig(BaseModel):
 class MdbConfig(BaseModel):
     base_url: str = Field(default=...)
     cluster_id: UUID = Field(default=...)
+    access_token: str = Field(default=...)
 
 
 class AgentConfig(BaseSettings):

@@ -12,6 +12,8 @@ from src.http.routers.internal_router import InternalRouter
 from src.http.routers.mongo_router import MongoRouter
 from src.mdb.mongo_service import MongoService
 
+logger = logging.getLogger(__name__)
+
 
 class HttpService:
     def __init__(self,
@@ -22,6 +24,7 @@ class HttpService:
         self._mongo_service = mongo_service
 
     def run(self):
+        self._add_middlewares(self._app)
         HttpService.register_routers(self._app, self._get_routers())
         config = uvicorn.Config(self._app,
                                 host=self._config.host,
@@ -48,3 +51,8 @@ class HttpService:
     def _add_logger_filters():
         uvicorn_logger = logging.getLogger("uvicorn.access")
         uvicorn_logger.addFilter(DisabledEndpointFilter(path=InternalRouter.ROUTER_PREFIX))
+
+    @staticmethod
+    def _add_middlewares(app: FastAPI):
+        pass
+    #     app.add_middleware(ExceptionHandlerMiddleware)
