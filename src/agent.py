@@ -52,6 +52,7 @@ class Agent:
 
     def _load_kube_config(self):
         config.load_incluster_config()
+        # config.load_kube_config()
 
     async def _report_hosts(self, admin_db: Database):
         hosts: List[MongoHost] = await self._get_rs_hosts(admin_db)
